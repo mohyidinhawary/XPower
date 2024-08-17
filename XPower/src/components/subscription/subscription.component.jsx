@@ -8,14 +8,12 @@ import { TraineeContext } from "../../context/trainee/trainee";
 
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+
 export default function Subscription() {
   const { Trainees } = useContext(TraineeContext);
   console.log(Trainees);
+  const id = localStorage.getItem("id");
   const navigate = useNavigate();
-  const handleSubscribe = (traineeId) => {
-    // Navigate to the payment page, passing the trainee id in the URL
-    navigate(`/payment/${traineeId}`);
-  };
 
   return (
     <>
@@ -36,7 +34,7 @@ export default function Subscription() {
             type="submit"
             fullWidth
             sx={{ mt: 3, mb: 2, backgroundColor: "red ", color: "white" }}
-            onClick={() => handleSubscribe(Trainees[0].id)}
+            onClick={() => navigate(`/payment/${id}`)}
           >
             Subscripe
           </Button>

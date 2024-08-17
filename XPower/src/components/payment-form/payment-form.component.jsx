@@ -13,13 +13,16 @@ import { styled } from "@mui/system";
 import { Button, Container } from "@mui/material";
 import { PaymentContext } from "../../context/payment/payment";
 import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 const FormGrid = styled("div")(() => ({
   display: "flex",
   flexDirection: "column",
 }));
 
 export default function PaymentForm() {
-  const { AddNewPayment } = useContext(PaymentContext);
+  const { AddNewPayment, AddNewQRCode } = useContext(PaymentContext);
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     amount: 0,
     CardNumber: "",
@@ -39,6 +42,7 @@ export default function PaymentForm() {
     try {
       AddNewPayment(formData);
       // Perform any additional actions after contact creation
+      navigate("/login");
       setFormData({
         Amount: 0,
         CardNumber: "",
@@ -169,6 +173,7 @@ export default function PaymentForm() {
               type="submit"
               fullWidth
               sx={{ mt: 3, mb: 2, backgroundColor: "red ", color: "white" }}
+              onClick={AddNewQRCode}
             >
               Generate QR Code
             </Button>
