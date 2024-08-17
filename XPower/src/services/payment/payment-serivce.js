@@ -4,8 +4,16 @@ class PaymentService extends BaseService {
   constructor() {
     super("Payment");
   }
+
   addPayment(inputdata) {
-    return this.post("payment", inputdata);
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("jwt"),
+      },
+    };
+    const UserId = localStorage.getItem("id");
+    return this.post(`payment?id=${UserId}`, inputdata, config);
   }
 }
 

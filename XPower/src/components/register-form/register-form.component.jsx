@@ -3,7 +3,7 @@ import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 
-import Link from "@mui/material/Link";
+import { Link } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 
@@ -78,7 +78,7 @@ export default function SignUp() {
             <img src={logo} alt="" />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign up
+            Registeration
           </Typography>
           <Box
             component="form"
@@ -178,14 +178,13 @@ export default function SignUp() {
             <Button
               type="submit"
               fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              sx={{ mt: 3, mb: 2, backgroundColor: "red", color: "white" }}
             >
-              Sign Up
+              Register
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link variant="body2" component={Link} to="/login">
                   Already have an account? Sign in
                 </Link>
               </Grid>
